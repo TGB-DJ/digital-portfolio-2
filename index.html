@@ -2,74 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chirenjeevi DJ | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chirenjeevi DJ - Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>Hi, I'm <span class="orange">Chirenjeevi DJ</span></h1>
-    <p>MSc Cybersecurity Student | Full Stack Learner</p>
-    <a href="#contact" class="btn">Contact Me</a>
+    <h1>Chirenjeevi DJ</h1>
+    <button id="darkModeToggle" aria-label="Toggle Dark/Light Mode">🌓</button>
   </header>
 
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <p>I’m a passionate Computer Science student learning Full Stack Development and Cybersecurity. I love creating modern websites and secure applications.</p>
-  </section>
-
-  <section id="skills" class="reveal">
-    <h2>Skills</h2>
+  <nav>
     <ul>
-      <li>Python</li>
-      <li>HTML, CSS, JavaScript</li>
-      <li>React (Learning)</li>
-      <li>Cybersecurity Tools</li>
-      <li>MS Office</li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <section id="projects" class="reveal">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Password Generator</h3>
-      <p>Secure password generator using HTML, CSS, JS & PHP.</p>
-      <a href="#">View Project</a>
-    </div>
-    <div class="project-card">
-      <h3>Portfolio Website</h3>
-      <p>Responsive personal portfolio with animations and dark/light mode.</p>
-      <a href="#">View Project</a>
-    </div>
-  </section>
+  <main>
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I'm <strong>Chirenjeevi DJ</strong>, an enthusiastic MSc Cybersecurity student with a strong passion for Full Stack Development and secure coding practices.<br>
+        I enjoy building modern, user-friendly web applications with a focus on performance and security.<br>
+        Currently expanding my skills in frontend/backend technologies, cloud services, and DevOps tools.<br><br>
+        🎓 Pursuing MSc Cybersecurity with hands-on experience in Data Structures, Algorithms, and Cloud Computing.<br>
+        💻 Skilled in Python, JavaScript, HTML, CSS, and working towards mastering full stack web development.<br>
+        🤝 Active participant in NSS and NCC, developing leadership and teamwork skills.<br>
+        📈 Passionate about learning new technologies and applying them to solve real-world problems.<br><br>
+        📧 Email: <a href="mailto:chirenjeev7616@gmail.com">chirenjeev7616@gmail.com</a><br>
+        📸 Instagram: <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">yourusername</a><br>
+        🐱 GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+      </p>
+    </section>
 
-  <section id="resume" class="reveal">
-    <h2>Resume</h2>
-    <a href="assets/resume.pdf" download class="btn">Download My Resume</a>
-  </section>
+    <section id="projects" class="section">
+      <h2>Projects</h2>
 
-  <section id="contact" class="reveal">
-    <h2>Contact Me</h2>
-    <form id="contact-form" onsubmit="sendEmail(event)">
-      <input type="text" name="user_name" placeholder="Your Name" required />
-      <input type="email" name="user_email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-    <p>
-      <a href="mailto:chirenjeev7616@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </p>
-  </section>
+      <article class="project-card">
+        <h3>Password Generator</h3>
+        <p>
+          A secure and customizable password generator tool built with HTML, CSS, and JavaScript.<br>
+          Features include:<br>
+          - Select password length<br>
+          - Include uppercase, lowercase, numbers, and symbols<br>
+          - Copy to clipboard functionality<br>
+          - Responsive design
+        </p>
+        <a href="password-generator/index.html" target="_blank" class="btn">View Project</a>
+      </article>
+
+      <!-- You can add more projects here -->
+
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="user_email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Chirenjeevi DJ</p>
-    <button onclick="toggleDarkMode()">Toggle Dark/Light</button>
+    <p>© 2025 Chirenjeevi DJ | All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
