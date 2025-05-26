@@ -1,35 +1,66 @@
-// Dark mode toggle
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
+// Dark/Light mode toggle - override system preference
+const toggleBtn = document.getElementById("darkModeToggle");
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.style.setProperty("--bg-color", "#121212");
+    document.documentElement.style.setProperty("--text-color", "#e0e0e0");
+    document.documentElement.style.setProperty("--accent-color", "#80d8ff");
+    document.documentElement.style.setProperty("--btn-bg", "#80d8ff");
+    document.documentElement.style.setProperty("--btn-hover", "#4fb3e3");
+    document.documentElement.style.setProperty("--input-bg", "#333333");
+    document.documentElement.style.setProperty("--input-border", "#80d8ff");
+  } else {
+    document.documentElement.style.setProperty("--bg-color", "#e0f7fa");
+    document.documentElement.style.setProperty("--text-color", "#022c43");
+    document.documentElement.style.setProperty("--accent-color", "#0288d1");
+    document.documentElement.style.setProperty("--btn-bg", "#0288d1");
+    document.documentElement.style.setProperty("--btn-hover", "#026ca0");
+    document.documentElement.style.setProperty("--input-bg", "#ffffff");
+    document.documentElement.style.setProperty("--input-border", "#0288d1");
+  }
 }
 
-// Scroll reveal animation
-window.addEventListener("scroll", () => {
-  const reveals = document.querySelectorAll(".reveal");
-  reveals.forEach((el) => {
-    const top = el.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (top < windowHeight - 100) {
-      el.classList.add("active");
-    }
-  });
-});
+function getSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
-// EmailJS contact form
-(function () {
-  emailjs.init("NnoZLTOA3qauqD3L4"); // Your Public Key
-})();
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else {
+    applyTheme(getSystemTheme());
+  }
+}
 
-function sendEmail(event) {
+function toggleTheme() {
+  const currentBg = getComputedStyle(document.documentElement).getPropertyValue("--bg-color").trim();
+  if (currentBg === "#e0f7fa") {
+    applyTheme("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    applyTheme("light");
+    localStorage.setItem("theme", "light");
+  }
+}
+
+toggleBtn.addEventListener("click", toggleTheme);
+
+// Load theme on page load
+loadTheme();
+
+// Contact form using EmailJS
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  emailjs.sendForm('service_c170cxq', 'template_1dut8a6', '#contact-form')
+  emailjs.sendForm('service_c170cxq', 'template_1dut8a6', this)
     .then(() => {
-      alert("✅ Message sent successfully!");
-      document.getElementById("contact-form").reset();
-    })
-    .catch((error) => {
-      console.error("❌ Failed:", error);
-      alert("❌ Failed to send. Please try again.");
+      alert("Message sent successfully!");
+      contactForm.reset();
+    }, (error) => {
+      alert("Failed to send message. Please try again later.");
+      console.error(error);
     });
-}
+});
