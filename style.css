@@ -1,182 +1,202 @@
+/* Default Light (Sky Blue) Theme */
 :root {
-  --orange: #ff6600;
-  --bg-light: #ffffff;
-  --bg-dark: #1a1a1a;
-  --text-light: #000000;
-  --text-dark: #ffffff;
-  --transition: all 0.3s ease;
+  --bg-color: #e0f7fa;
+  --text-color: #022c43;
+  --accent-color: #0288d1;
+  --btn-bg: #0288d1;
+  --btn-hover: #026ca0;
+  --input-bg: #ffffff;
+  --input-border: #0288d1;
+}
+
+/* Dark Theme overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #80d8ff;
+    --btn-bg: #80d8ff;
+    --btn-hover: #4fb3e3;
+    --input-bg: #333333;
+    --input-border: #80d8ff;
+  }
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-light);
-  transition: var(--transition);
-}
-
-body.dark-mode {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: var(--orange);
+  background-color: var(--accent-color);
   color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
-header .orange {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 5px 10px;
-  border-radius: 8px;
-}
-
-header p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-section {
-  padding: 50px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-section h2 {
-  font-size: 2rem;
-  border-left: 5px solid var(--orange);
-  padding-left: 10px;
-  margin-bottom: 20px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-ul li {
-  background-color: var(--orange);
+#darkModeToggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
   color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: var(--transition);
 }
 
-ul li:hover {
-  transform: scale(1.05);
+nav {
+  background-color: var(--btn-bg);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0.5rem 2rem;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex-grow: 1;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section h2 {
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .project-card {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-left: 4px solid var(--orange);
-  margin-bottom: 20px;
-  border-radius: 8px;
-  transition: var(--transition);
+  background-color: var(--input-bg);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
 }
 
-body.dark-mode .project-card {
-  background-color: #2a2a2a;
+.project-card h3 {
+  margin-top: 0;
 }
 
-.project-card a {
-  color: var(--orange);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-form input, form textarea {
-  padding: 10px;
-  font-size: 1rem;
+.project-card .btn {
+  display: inline-block;
+  background-color: var(--btn-bg);
+  color: white;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-form button {
-  align-self: flex-start;
-}
-
-.btn {
-  background-color: var(--orange);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-  font-weight: bold;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-#contact a {
-  color: var(--orange);
   text-decoration: none;
-  margin-right: 10px;
-  font-size: 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
+.project-card .btn:hover {
+  background-color: var(--btn-hover);
 }
 
-footer button {
-  background-color: var(--orange);
+/* Contact Form */
+form {
+  max-width: 400px;
+  background-color: var(--input-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: var(--text-color);
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: var(--btn-bg);
   color: white;
   border: none;
-  padding: 8px 15px;
-  border-radius: 20px;
-  margin-top: 10px;
+  padding: 0.7rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-footer button:hover {
-  transform: scale(1.1);
+button[type="submit"]:hover {
+  background-color: var(--btn-hover);
 }
 
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease-in-out;
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0px);
+/* Footer */
+footer {
+  background-color: var(--accent-color);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+  font-size: 0.9rem;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  section h2 {
-    font-size: 1.5rem;
-  }
-
-  ul {
+  nav ul {
     flex-direction: column;
+    gap: 0.5rem;
+  }
+  nav li {
+    margin: 0;
   }
 }
