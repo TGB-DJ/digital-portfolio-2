@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chirenjeevi DJ | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+  <script defer src="script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
@@ -15,12 +16,12 @@
     <a href="#contact" class="btn">Contact Me</a>
   </header>
 
-  <section id="about">
+  <section id="about" class="reveal">
     <h2>About Me</h2>
-    <p>I’m a passionate student of Computer Science with interests in Cybersecurity and Full Stack Development. I love building and securing digital systems.</p>
+    <p>I’m a passionate Computer Science student learning Full Stack Development and Cybersecurity. I love creating modern websites and secure applications.</p>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="reveal">
     <h2>Skills</h2>
     <ul>
       <li>Python</li>
@@ -31,25 +32,35 @@
     </ul>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="reveal">
     <h2>Projects</h2>
     <div class="project-card">
       <h3>Password Generator</h3>
-      <p>A secure password generator using HTML, CSS, JavaScript & PHP.</p>
-      <a href="#" target="_blank">View Project</a>
+      <p>Secure password generator using HTML, CSS, JS & PHP.</p>
+      <a href="#">View Project</a>
     </div>
-    <!-- Add more projects as needed -->
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>Responsive personal portfolio with animations and dark/light mode.</p>
+      <a href="#">View Project</a>
+    </div>
   </section>
 
-  <section id="resume">
+  <section id="resume" class="reveal">
     <h2>Resume</h2>
     <a href="assets/resume.pdf" download class="btn">Download My Resume</a>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="reveal">
     <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:chirenjeev7616@gmail.com">chirenjeev7616@gmail.com</a></p>
+    <form id="contact-form" onsubmit="sendEmail(event)">
+      <input type="text" name="user_name" placeholder="Your Name" required />
+      <input type="email" name="user_email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
     <p>
+      <a href="mailto:chirenjeev7616@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
