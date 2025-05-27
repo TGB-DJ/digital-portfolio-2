@@ -51,16 +51,16 @@ toggleBtn.addEventListener("click", toggleTheme);
 loadTheme();
 
 // Contact form using EmailJS
-const contactForm = document.getElementById("contact-form");
-contactForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  emailjs.send("service_c170cxq","template_1dut8a6", this)
-    .then(() => {
-      alert("Message sent successfully!");
-      contactForm.reset();
-    }, (error) => {
-      alert("Failed to send message. Please try again later.");
-      console.error(error);
-    });
+emailjs.send("service_c170cxq", "template_1dut8a6", {
+  from_name: "Chirenjeevi",
+  to_name: "DJ",
+  message: "This is a test message",
+  reply_to: "chirenjeev7616@gmail.com"
+})
+.then(() => {
+  alert("Message sent successfully!");
+})
+.catch((error) => {
+  alert("Failed to send message. Please try again later.");
+  console.error(error);
 });
