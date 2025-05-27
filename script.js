@@ -55,7 +55,7 @@ const contactForm = document.getElementById("contact-form");
 contactForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  emailjs.sendForm('service_c170cxq', 'template_1dut8a6', this)
+  emailjs.send("service_c170cxq","template_1dut8a6", this)
     .then(() => {
       alert("Message sent successfully!");
       contactForm.reset();
